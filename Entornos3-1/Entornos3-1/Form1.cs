@@ -26,16 +26,22 @@ namespace Entornos3_1
             //Leo el telegrama
             textoTelegrama = txtTelegrama.Text;
             // telegrama urgente?
-            if (cbUrgente.Checked)
+            if (radioUrgente.Checked)
+            {
                 tipoTelegrama = 'u';
+            }
+            if (radioButtonOrdinario.Checked)
+            {
+                tipoTelegrama = 'o';
+            }
             //Obtengo el número de palabras que forma el telegrama 
-            numPalabras = textoTelegrama.Length;
+            numPalabras = textoTelegrama.Split(' ').Length;
             //Si el telegrama es ordinario
             if (tipoTelegrama == 'o')
                 if (numPalabras <= 10)
-                    coste = 25;
+                    coste = 2.5;
                 else
-                    coste = 0.5 * numPalabras;
+                    coste = 2.5 + (0.5 * (numPalabras - 10));
             else
             //Si el telegrama es urgente
             if (tipoTelegrama == 'u')
